@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="002-insert-wallets-from-csv" author="chatgpt">
+        <loadData
+                file="db/changelog/changesets/data/initial-wallets.csv"
+                tableName="wallets"
+                separator=","
+                encoding="UTF-8">
+            <column name="id" type="UUID"/>
+            <column name="balance" type="NUMERIC"/>
+            <column name="created_at" type="TIMESTAMP"/>
+            <column name="updated_at" type="TIMESTAMP"/>
+        </loadData>
+    </changeSet>
+</databaseChangeLog>

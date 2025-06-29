@@ -1,0 +1,5 @@
+databaseChangeLog:
+  - include:
+      file: db/changelog/changesets/001-create-wallets-table.xml
+  - include:
+      file: db/changelog/changesets/002-insert-wallets.csv.xml

@@ -1,0 +1,21 @@
+spring:
+  datasource:
+      driver-class-name: org.postgresql.Driver
+      url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/wallets}
+      username: ${SPRING_DATASOURCE_USERNAME:postgres}
+      password: ${SPRING_DATASOURCE_PASSWORD:postgres}
+
+  jpa:
+    hibernate:
+      ddl-auto: ${SPRING_JPA_HIBERNATE_DDL_AUTO}
+    show-sql: ${SPRING_JPA_SHOW_SQL:true}
+    properties:
+      hibernate.format_sql: ${SPRING_JPA_PROPERTIES_HIBERNATE_FORMAT_SQL}
+
+logging:
+  level:
+    root: ${LOGGING_LEVEL_ROOT:INFO}
+    org.dzhioev.ws.moneytransfer: "${LOGGING_LEVEL_org_dzhioev_ws_moneytransfer:INFO}"
+
+server:
+  port: ${SERVER_PORT:8080}
