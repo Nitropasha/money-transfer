@@ -2,7 +2,6 @@ package org.dzhioev.ws.moneytransfer.service;
 
 import org.dzhioev.ws.moneytransfer.dto.WalletOperationRequest;
 import org.dzhioev.ws.moneytransfer.entity.Wallet;
-import org.dzhioev.ws.moneytransfer.enums.OperationType;
 import org.dzhioev.ws.moneytransfer.repository.WalletRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -24,7 +23,7 @@ public class WalletService {
     @Transactional
     public void processOperation(WalletOperationRequest request) {
         Wallet wallet = walletRepository.findByIdForUpdate(request.getWalletId())
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Wallet not found"));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Кошелек не найден"));
 
         request.getOperationType().apply(wallet, request.getAmount());
 
@@ -35,7 +34,7 @@ public class WalletService {
     @Transactional(readOnly = true)
     public long getBalance(UUID walletId) {
         Wallet wallet = walletRepository.findById(walletId)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Wallet not found"));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Кошелек не найден"));
         return wallet.getBalance();
     }
 }

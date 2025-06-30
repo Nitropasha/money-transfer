@@ -88,7 +88,7 @@ class MoneyTransferApplicationTests {
         ResponseStatusException ex = assertThrows(ResponseStatusException.class,
                 () -> walletService.processOperation(request));
 
-        assertEquals("400 BAD_REQUEST \"Insufficient funds\"", ex.getMessage());
+        assertEquals("400 BAD_REQUEST \"Недостаточно средств\"", ex.getMessage());
         verify(walletRepository, never()).save(any());
     }
 
@@ -103,7 +103,7 @@ class MoneyTransferApplicationTests {
         ResponseStatusException ex = assertThrows(ResponseStatusException.class,
                 () -> walletService.processOperation(request));
 
-        assertEquals("404 NOT_FOUND \"Wallet not found\"", ex.getMessage());
+        assertEquals("404 NOT_FOUND \"Кошелек не найден\"", ex.getMessage());
     }
 
     @Test

@@ -25,12 +25,12 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(HttpMessageNotReadableException.class)
     public ResponseEntity<Map<String, String>> handleInvalidJson(HttpMessageNotReadableException ex) {
-        return ResponseEntity.badRequest().body(Map.of("error", "Invalid JSON format"));
+        return ResponseEntity.badRequest().body(Map.of("error", "Неверный формат JSON"));
     }
 
     @ExceptionHandler(ResponseStatusException.class)
     public ResponseEntity<Map<String, String>> handleStatus(ResponseStatusException ex) {
-        return ResponseEntity.status(ex.getStatusCode())  // <-- исправлено
+        return ResponseEntity.status(ex.getStatusCode())
                 .body(Map.of("error", ex.getReason()));
     }
 }

@@ -18,6 +18,7 @@ import java.util.UUID;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+//Тест запускать при запущенном docker-compose
 @SpringBootTest
 @AutoConfigureMockMvc
 @ActiveProfiles("test")

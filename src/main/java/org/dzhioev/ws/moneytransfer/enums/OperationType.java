@@ -15,7 +15,7 @@ public enum OperationType {
         @Override
         public void apply(Wallet wallet, long amount) {
             if (wallet.getBalance() < amount) {
-                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Insufficient funds");
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Недостаточно средств");
             }
             wallet.setBalance(wallet.getBalance() - amount);
         }
