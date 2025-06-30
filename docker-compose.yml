@@ -38,22 +38,3 @@ volumes:
 
 networks:
   wallet-net:
-
-#version: '3.8'
-#
-#services:
-#  postgres:
-#    image: postgres:15
-#    container_name: wallets_postgres
-#    ports:
-#      - "5432:5432"
-#    environment:
-#      POSTGRES_DB: wallets
-#      POSTGRES_USER: postgres
-#      POSTGRES_PASSWORD: postgres
-#    volumes:
-#      - pgdata:/var/lib/postgresql/data
-#    restart: unless-stopped
-#
-#volumes:
-#  pgdata:

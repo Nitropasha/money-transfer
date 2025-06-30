@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RestControllerAdvice
@@ -19,7 +20,10 @@ public class GlobalExceptionHandler {
         Map<String, String> errors = ex.getBindingResult()
                 .getFieldErrors()
                 .stream()
-                .collect(Collectors.toMap(FieldError::getField, FieldError::getDefaultMessage));
+                .collect(Collectors.toMap(
+                        FieldError::getField,
+                        error -> Optional.ofNullable(error.getDefaultMessage()).orElse("Ошибка валидации")
+                ));
         return ResponseEntity.badRequest().body(errors);
     }
 
